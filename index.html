@@ -2,48 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <title>Jason Torres Reyes Portfolio</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background: #fff;
-        color: #000;
-      }
-
-      .centered-profile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 2rem;
-      }
-
-      .section__pic-container img {
-        max-width: 200px;
-        height: auto;
-        border-radius: 50%;
-        display: block;
-        margin: 0 auto;
-      }
-
-      .section__text {
-        margin-top: 1rem;
-      }
-
-      .btn-container {
-        margin-top: 1rem;
-      }
-
       .btn {
         margin: 0.5rem;
         padding: 0.5rem 1rem;
@@ -238,14 +200,21 @@
               <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Cowrie-Honeypot-EC2-Lab','_blank')">Live Demo</button>
             </div>
           </div>
+          <!-- Updated Project 3 -->
           <div class="details-container color-container">
             <div class="article-container">
-              <img src="./assets/project-3.png" alt="Project 3" class="project-img" />
+              <a href="https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab" target="_blank">
+                <img src="./assets/static-route.png" alt="Static Route Lab" class="project-img" />
+              </a>
             </div>
-            <h2 class="experience-sub-title project-title">Project Three</h2>
+            <h2 class="experience-sub-title project-title">
+              <a href="https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab" target="_blank" style="color: inherit; text-decoration: none;">
+                Static Routes Lab
+              </a>
+            </h2>
             <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">Github</button>
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/'">Live Demo</button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab','_blank')">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab','_blank')">Live Demo</button>
             </div>
           </div>
         </div>
@@ -289,3 +258,4 @@
     <script src="script.js"></script>
   </body>
 </html>
+
