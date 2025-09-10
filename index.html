@@ -4,280 +4,165 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jason Torres Reyes Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; background: #f9f9f9; color: #333; }
 
-    .btn {
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      border: none;
-      cursor: pointer;
-      border-radius: 6px;
-    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
 
-    .btn-color-1 { background-color: #000; color: #fff; }
-    .btn-color-2 { background-color: #ccc; color: #000; }
-    .icon { width: 24px; height: 24px; margin: 0 0.5rem; }
-    .arrow { display: block; margin: 2rem auto; cursor: pointer; }
-    .project-img { width: 100%; height: auto; border-radius: 8px; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    nav .logo { font-weight: bold; font-size: 1.2rem; }
+    nav ul { display: flex; gap: 1.5rem; }
+    nav ul li { display: inline; }
+    nav ul li a { font-weight: 500; }
 
-    /* 🔹 Make project cards flex so buttons stay aligned at bottom */
-    .details-container.color-container {
-      display: flex;
-      flex-direction: column;
-    }
+    .hamburger-menu { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger-menu span { display: block; width: 25px; height: 3px; background: #000; }
+
+    section { padding: 4rem 2rem; max-width: 1200px; margin: auto; }
+    h1, h2, h3 { margin-bottom: 0.5rem; }
+    p { margin-bottom: 1rem; }
+
+    /* Profile Section */
+    #profile { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    #profile img { width: 150px; border-radius: 50%; margin-bottom: 1rem; }
+    .btn-container { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1rem; }
+    .btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    .btn-color-1 { background: #000; color: #fff; }
+    .btn-color-2 { background: #ccc; color: #000; }
+
+    /* About & Experience */
+    .about-containers, .experience-details-container { display: grid; gap: 2rem; }
+    .about-containers { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-bottom: 2rem; }
+    .details-container { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .text-container { text-align: justify; }
+
+    /* Projects */
+    #projects .about-containers { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .color-container { display: flex; flex-direction: column; background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .project-img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
     .project-title { flex-grow: 1; }
-    .btn-container { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .btn-container { margin-top: auto; }
 
-    /* Mobile optimization */
-    @media screen and (max-width: 768px) {
-      nav#desktop-nav { display: none; }
-      nav#hamburger-nav { display: block; }
+    /* Contact */
+    #contact .contact-info-upper-container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 
-      .section__pic-container img { max-width: 120px; }
-      .section__text h1 { font-size: 1.6rem; }
-      .section__text__p1, .section__text__p2 { font-size: 0.9rem; }
+    footer { background: #222; color: #fff; text-align: center; padding: 2rem 1rem; margin-top: 4rem; }
+    footer a { color: #fff; }
 
-      .experience-details-container,
-      .about-containers { flex-direction: column; gap: 1rem; }
-
-      .details-container { width: 100%; margin-bottom: 1.5rem; }
-
-      /* Project cards full width */
-      .details-container.color-container { width: 100%; box-sizing: border-box; padding: 0 1rem; }
-
-      /* Buttons full width */
-      .btn-container { flex-direction: column; width: 100%; }
+    /* Media Queries */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hamburger-menu { display: flex; }
+      section { padding: 2rem 1rem; }
+      .about-containers, .experience-details-container, #projects .about-containers { grid-template-columns: 1fr; }
       .btn { width: 100%; }
-
-      /* Reduce arrow margin */
-      .arrow { margin: 1.5rem auto; }
-    }
-
-    @media screen and (min-width: 769px) {
-      nav#hamburger-nav { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="dark-mode-toggle" onclick="toggleDarkMode()">
-    <img id="theme-icon" src="./assets/darkmode off.png" alt="Toggle Dark Mode" />
-  </div>
 
-  <!-- Desktop Navigation -->
-  <nav id="desktop-nav">
-    <div class="logo">Jason Jesus Torres Reyes</div>
-    <div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hamburger Navigation -->
-  <nav id="hamburger-nav">
+  <nav>
     <div class="logo">Jason Torres Reyes</div>
-    <div class="hamburger-menu">
-      <div class="hamburger-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="menu-links">
-        <li><a href="#about" onclick="toggleMenu()">About</a></li>
-        <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-      </div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger-menu" onclick="document.querySelector('nav ul').classList.toggle('show')">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </nav>
 
-  <!-- Profile Section -->
   <section id="profile">
-    <div class="centered-profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.png" alt="Jason Torres profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Jason Torres Reyes</h1>
-        <p class="section__text__p2">Aspiring Cybersecurity Analyst</p>
-        <div class="btn-container">
-          <button class="btn btn-color-2" onclick="window.open('./assets/resume-example.pdf')">Download CV</button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
-        </div>
-        <div id="socials-container">
-          <a href="https://www.linkedin.com/in/jason-torres-reyes-9048242b6/" target="_blank">
-            <img src="./assets/linkedin.png" alt="LinkedIn" class="icon" />
-          </a>
-          <a href="https://github.com/jtr2515/-My-Portfolio" target="_blank">
-            <img src="./assets/github.png" alt="GitHub" class="icon" />
-          </a>
-        </div>
-      </div>
+    <img src="./assets/profile-pic.png" alt="Jason Torres profile picture">
+    <h1>Jason Torres Reyes</h1>
+    <p>Aspiring Cybersecurity Analyst</p>
+    <div class="btn-container">
+      <button class="btn btn-color-2" onclick="window.open('./assets/resume-example.pdf')">Download CV</button>
+      <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
     </div>
   </section>
 
-  <!-- About Section -->
   <section id="about">
-    <div class="centered-about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="about-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <img src="./assets/experience.png" alt="Experience icon" class="icon" />
-            <h3>Experience</h3>
-            <p>AWS Security & Infrastructure, Penetration Testing Tools, Microsoft 365 Administration.</p>
-          </div>
-          <div class="details-container">
-            <img src="./assets/education.png" alt="Education icon" class="icon" />
-            <h3>Education</h3>
-            <p>Atlantis University<br />Associate of Science in Information Technology – Expected 2025<br /></p>
-          </div>
-        </div>
-        <div class="text-container">
-          <p style="text-align: justify;">
-            Cybersecurity student passionate about ethical hacking, cloud security, and digital defense. Skilled in penetration testing tools and cloud technologies across AWS and Microsoft platforms. Experienced in managing cloud deployments, automating CI/CD pipelines, and administering Microsoft 365 environments including user access, security policies, and collaboration tools.
-          </p>
-        </div>
+    <h1>About Me</h1>
+    <div class="about-containers">
+      <div class="details-container">
+        <h3>Experience</h3>
+        <p>AWS Security & Infrastructure, Penetration Testing Tools, Microsoft 365 Administration.</p>
+      </div>
+      <div class="details-container">
+        <h3>Education</h3>
+        <p>Atlantis University<br>Associate of Science in Information Technology – Expected 2025</p>
       </div>
     </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#experience'" />
+    <div class="text-container">
+      <p>Cybersecurity student passionate about ethical hacking, cloud security, and digital defense. Skilled in penetration testing tools and cloud technologies across AWS and Microsoft platforms. Experienced in managing cloud deployments, automating CI/CD pipelines, and administering Microsoft 365 environments.</p>
+    </div>
   </section>
 
-  <!-- Experience Section -->
   <section id="experience">
-    <p class="section__text__p1">Explore My</p>
-    <h1 class="title">Experience</h1>
+    <h1>Experience</h1>
     <div class="experience-details-container">
-      <div class="about-containers">
-        <div class="details-container">
-          <h2 class="experience-sub-title">Security & Tools</h2>
-          <div class="article-container">
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Python</h3><p>Basic</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Kali Linux</h3><p>Nmap, Metasploit, Empire</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Splunk</h3><p>Monitoring & Analysis</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Microsoft 365</h3><p>Policies, SharePoint, Teams</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Microsoft Defender</h3><p>Security Management</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Security Concepts</h3><p>Vulnerability Assessment, Malware Analysis</p></div></article>
-          </div>
-        </div>
-        <div class="details-container">
-          <h2 class="experience-sub-title">Cloud & DevOps</h2>
-          <div class="article-container">
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>AWS</h3><p>EC2, S3, VPC, Subnets, Route Tables</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Security Groups</h3><p>IAM & Firewall Config</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Auto Scaling</h3><p>Elastic & Resilient Systems</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>CI/CD Tools</h3><p>CodePipeline, CodeBuild, Beanstalk</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>GitHub</h3><p>CI Integration, Automation</p></div></article>
-            <article><img src="./assets/checkmark.png" class="icon" /><div><h3>Platforms</h3><p>Linux, Windows, AWS, GitHub</p></div></article>
-          </div>
-        </div>
+      <div class="details-container">
+        <h3>Security & Tools</h3>
+        <p>Python, Kali Linux, Splunk, Microsoft 365, Microsoft Defender, Security Concepts</p>
+      </div>
+      <div class="details-container">
+        <h3>Cloud & DevOps</h3>
+        <p>AWS, Security Groups, Auto Scaling, CI/CD Tools, GitHub, Linux & Windows Platforms</p>
       </div>
     </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#projects'" />
   </section>
 
-  <!-- Projects Section -->
   <section id="projects">
-    <p class="section__text__p1">Browse My Recent</p>
-    <h1 class="title">Projects</h1>
-    <div class="experience-details-container">
-      <div class="about-containers">
-        <!-- Project 1 -->
-        <div class="details-container color-container">
-          <div class="article-container">
-            <img src="./assets/project-1.png" alt="Project 1" class="project-img" />
-          </div>
-          <h2 class="experience-sub-title project-title">EternalBlue Exploit Lab (MS17-010)</h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Eternalblue-lab'">Github</button>
-          </div>
+    <h1>Projects</h1>
+    <div class="about-containers">
+      <div class="color-container">
+        <img src="./assets/project-1.png" class="project-img" alt="Project 1">
+        <h3 class="project-title">EternalBlue Exploit Lab (MS17-010)</h3>
+        <div class="btn-container">
+          <button class="btn btn-color-2" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Eternalblue-lab','_blank')">Github</button>
         </div>
-
-        <!-- Project 2 -->
-        <div class="details-container color-container">
-          <div class="article-container">
-            <a href="https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Cowrie-Honeypot-EC2-Lab" target="_blank">
-              <img src="./assets/project-2.png" alt="Project 2" class="project-img" />
-            </a>
-          </div>
-          <h2 class="experience-sub-title project-title">
-            <a href="https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Cowrie-Honeypot-EC2-Lab" target="_blank" style="color: inherit; text-decoration: none;">
-              Threat Observation Lab: Cowrie in Action
-            </a>
-          </h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Cowrie-Honeypot-EC2-Lab','_blank')">Github</button>
-          </div>
+      </div>
+      <div class="color-container">
+        <img src="./assets/project-2.png" class="project-img" alt="Project 2">
+        <h3 class="project-title">Threat Observation Lab: Cowrie in Action</h3>
+        <div class="btn-container">
+          <button class="btn btn-color-2" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Cowrie-Honeypot-EC2-Lab','_blank')">Github</button>
         </div>
-
-        <!-- Project 3 -->
-        <div class="details-container color-container">
-          <div class="article-container">
-            <a href="https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab" target="_blank">
-              <img src="./assets/static-route.png" alt="Static Route Lab" class="project-img" />
-            </a>
-          </div>
-          <h2 class="experience-sub-title project-title">
-            <a href="https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab" target="_blank" style="color: inherit; text-decoration: none;">
-              Static Routes Lab
-            </a>
-          </h2>
-          <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab','_blank')">Github</button>
-          </div>
+      </div>
+      <div class="color-container">
+        <img src="./assets/static-route.png" class="project-img" alt="Project 3">
+        <h3 class="project-title">Static Routes Lab</h3>
+        <div class="btn-container">
+          <button class="btn btn-color-2" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab','_blank')">Github</button>
         </div>
       </div>
     </div>
-    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
   </section>
 
-  <!-- Contact Section -->
   <section id="contact">
-    <p class="section__text__p1">Get in Touch</p>
-    <h1 class="title">Contact Me</h1>
+    <h1>Contact Me</h1>
     <div class="contact-info-upper-container">
       <div class="contact-info-container">
-        <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-        <p><a href="mailto:jjtorres716@gmail.com">jjtorres716@gmail.com</a></p>
+        <p>Email: <a href="mailto:jjtorres716@gmail.com">jjtorres716@gmail.com</a></p>
       </div>
       <div class="contact-info-container">
-        <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
-        <p><a href="https://www.linkedin.com/in/jason-torres-reyes-9048242b6/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/jason-torres-reyes-9048242b6/" target="_blank">Jason Torres</a></p>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <nav>
-      <div class="nav-links-container">
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <p>Copyright &#169; 2025 Jason Torres Reyes. All Rights Reserved.</p>
-    <p><strong>📍 Miami, FL</strong></p>
-    <p><strong>📧 jjtorres716@gmail.com</strong></p>
-    <p><strong><a href="https://github.com/jtr2515/-My-Portfolio" target="_blank">GitHub</a></strong></p>
-    <p><strong><a href="https://www.linkedin.com/in/jason-torres-reyes-9048242b6/" target="_blank">LinkedIn</a></strong></p>
+    <p>© 2025 Jason Torres Reyes. All Rights Reserved.</p>
+    <p>📍 Miami, FL | 📧 jjtorres716@gmail.com</p>
+    <p><a href="https://github.com/jtr2515/-My-Portfolio" target="_blank">GitHub</a> | <a href="https://www.linkedin.com/in/jason-torres-reyes-9048242b6/" target="_blank">LinkedIn</a></p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
-
