@@ -6,11 +6,18 @@
     <title>Jason Torres Reyes Portfolio</title>
     <link rel="stylesheet" href="style.css" />
     <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+
       .btn {
         margin: 0.5rem;
         padding: 0.5rem 1rem;
         border: none;
         cursor: pointer;
+        border-radius: 6px;
       }
 
       .btn-color-1 {
@@ -35,18 +42,65 @@
         cursor: pointer;
       }
 
+      .project-img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      /* Mobile optimization */
       @media screen and (max-width: 768px) {
+        nav#desktop-nav {
+          display: none;
+        }
+
+        nav#hamburger-nav {
+          display: block;
+        }
+
         .section__pic-container img {
-          max-width: 150px;
+          max-width: 120px;
         }
 
         .section__text h1 {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
         }
 
         .section__text__p1,
         .section__text__p2 {
-          font-size: 1rem;
+          font-size: 0.9rem;
+        }
+
+        .experience-details-container,
+        .about-containers {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .details-container {
+          width: 100%;
+        }
+
+        .btn-container {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+
+      @media screen and (min-width: 769px) {
+        nav#hamburger-nav {
+          display: none;
         }
       }
     </style>
@@ -181,7 +235,6 @@
             <h2 class="experience-sub-title project-title">EternalBlue Exploit Lab (MS17-010)</h2>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Eternalblue-lab'">Github</button>
-              <button class="btn btn-color-2 project-btn" onclick="location.href='#'">Live Demo</button>
             </div>
           </div>
           <div class="details-container color-container">
@@ -197,10 +250,8 @@
             </h2>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Cowrie-Honeypot-EC2-Lab','_blank')">Github</button>
-              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/Cowrie-Honeypot-EC2-Lab','_blank')">Live Demo</button>
             </div>
           </div>
-          <!-- Updated Project 3 -->
           <div class="details-container color-container">
             <div class="article-container">
               <a href="https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab" target="_blank">
@@ -214,7 +265,6 @@
             </h2>
             <div class="btn-container">
               <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab','_blank')">Github</button>
-              <button class="btn btn-color-2 project-btn" onclick="window.open('https://github.com/jtr2515/-My-Portfolio/tree/main/Projects/static-routes-lab','_blank')">Live Demo</button>
             </div>
           </div>
         </div>
