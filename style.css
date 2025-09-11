@@ -12,6 +12,11 @@ body {
   margin: 0;
   line-height: 1.6;
   overflow-x: hidden;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  -webkit-text-size-adjust: 100%;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 html, body {
@@ -20,6 +25,7 @@ html, body {
 
 html {
   scroll-behavior: smooth;
+  height: -webkit-fill-available;
 }
 
 p {
