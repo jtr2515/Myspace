@@ -53,6 +53,8 @@
   #profile { height: auto; margin-bottom: 0; }
   article {
     font-size: 1rem;
+    width: 100%;
+    justify-content: flex-start;
   }
   footer nav {
     height: fit-content;
@@ -97,7 +99,21 @@
   }
   /* Project cards full width on phones */
   .details-container.color-container { width: 100%; box-sizing: border-box; }
+  .article-container { gap: 1rem; justify-content: center; }
   .btn { width: 100%; }
+  .contact-info-upper-container { width: 100%; box-sizing: border-box; }
+}
+
+/* Ultra-tight phones (<= 380px) */
+@media screen and (max-width: 380px) {
+  .logo { font-size: 1.2rem; }
+  .nav-links li a { font-size: 0.95rem; }
+  .title { font-size: 1.6rem; }
+  .section__text__p2 { font-size: 1.05rem; }
+  .section__pic-container { width: 130px; }
+  article { width: 100%; justify-content: flex-start; gap: 0.75rem; }
+  .article-container { gap: 1rem; justify-content: center; }
+  section, .section-container, #about, #experience, #projects, #contact { margin: 0 0.5rem !important; }
 }
 
 
