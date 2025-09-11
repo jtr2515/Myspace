@@ -1,6 +1,6 @@
 @media screen and (max-width: 1400px) {
   #profile {
-    height: 83vh;
+    height: auto;
     margin-bottom: 6rem;
   }
   .about-containers {
@@ -56,10 +56,7 @@
     width: 100%;
     justify-content: flex-start;
   }
-  footer nav {
-    height: fit-content;
-    margin-bottom: 2rem;
-  }
+  footer nav { height: auto; margin-bottom: 2rem; }
   .about-containers,
   .contact-info-upper-container,
   .btn-container {

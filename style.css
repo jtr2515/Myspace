@@ -41,7 +41,8 @@ nav,
 nav {
   justify-content: space-around;
   align-items: center;
-  height: 17vh;
+  height: auto;
+  padding: 1rem 0;
 }
 
 .nav-links {
@@ -418,7 +419,7 @@ article .icon {
 
 /* FOOTER */
 footer {
-  height: 26vh;
+  height: auto;
   margin: 0 1rem;
 }
 
