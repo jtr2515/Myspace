@@ -299,32 +299,31 @@ section {
     width: 100%; /* Ensure full width usage */
 }
 
-/* FIX: Ensure container can flex on desktop, and will be easily overwritten by media query */
 .about-details-container {
     display: flex;
-    flex-direction: row; /* Default: horizontal on desktop */
+    flex-direction: column; /* Apilados por defecto */
     justify-content: center;
-    align-items: flex-start; /* Aligned to the top for better balance */
-    gap: 2rem; 
+    align-items: center;
+    gap: 2rem; /* Espacio entre los contenedores de detalles y el texto */
     margin-top: 2rem;
 }
 
-/* FIX: Ensure the two cards can flex on desktop */
 .about-containers {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap; /* Permitir que los contenedores de experiencia/educación se envuelvan */
     justify-content: center;
     gap: 1.5rem;
-    width: 50%; /* Let it take half the width on desktop */
+    width: 100%; /* Ocupar todo el ancho disponible */
 }
 
-/* FIX: Use flexible basis and remove rigid min-width to allow shrinking on mobile */
+/* FIX: Changed to a flexible model and removed fixed min-width to prevent overflow */
 .details-container {
     padding: 1.5rem;
-    flex: 1 1 250px; /* New: Allows shrinking below 250px if needed on small screens */
+    flex: 1 1 280px; /* New: Allows a base size of 280px but can shrink */
+    /* REMOVED: min-width: 280px; */
     background: white;
-    border-radius: 1.5rem; 
-    border: rgb(163, 163, 163) 1px solid;
+    border-radius: 1.5rem; /* Menos redondeado */
+    border: rgb(163, 163, 163) 1px solid; /* Borde más delgado */
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     display: flex;
@@ -350,12 +349,12 @@ section {
 }
 
 .text-container {
-    max-width: 45%; /* Max width on desktop */
+    max-width: 90%; /* Much wider on all devices */
     text-align: justify;
-    /* Removed margin-top to align better with cards */
+    margin-top: 2rem;
     font-size: 1rem;
     color: rgb(85, 85, 85);
-    padding: 0 1rem; 
+    padding: 0 1rem; /* Add some padding for better readability */
 }
 
 /* Flecha de scroll */
@@ -392,19 +391,19 @@ section {
 .experience-details-container {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; 
+    flex-wrap: wrap; /* Permitir que los grupos de habilidades se envuelvan */
     gap: 2rem;
     margin-top: 2rem;
 }
 
 .article-container {
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
+    display: grid; /* Usar grid para un mejor control del layout de habilidades */
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
     gap: 1.5rem;
     text-align: initial;
     justify-content: center;
     width: 100%;
-    max-width: 600px; 
+    max-width: 600px; /* Ancho máximo para el grupo de artículos */
     margin: 0 auto;
 }
 
@@ -416,7 +415,7 @@ article {
 
 article .icon {
     cursor: default;
-    width: 1.5rem; 
+    width: 1.5rem; /* Iconos más pequeños para habilidades */
     height: 1.5rem;
 }
 
@@ -436,16 +435,16 @@ article p {
     padding-bottom: 2rem;
 }
 
-.experience-details-container.project-cards { 
+.experience-details-container.project-cards { /* Nueva clase para el contenedor de proyectos */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem; 
+    gap: 2rem; /* Espacio entre tarjetas */
     margin-top: 2rem;
     padding: 0 1rem;
 }
 
-/* FIX: Used flexible flex basis and removed rigid min-width */
+/* CRITICAL FIX: Removed rigid min-width that caused overflow on small screens */
 .color-container {
     border-color: rgb(163, 163, 163);
     background: rgb(250, 250, 250);
@@ -455,8 +454,10 @@ article p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 1 1 300px; /* Allows the card to take at least 300px or less if necessary */
-    max-width: 450px; 
+    flex: 1 1 300px; /* New: Set a flexible basis of 300px but allows shrinking */
+    max-width: 450px; /* Keeps max-width for desktop */
+    /* REMOVED: flex-basis: 35%; */
+    /* REMOVED: min-width: 350px; */
     width: 100%;
 }
 
@@ -466,7 +467,7 @@ article p {
     color: black;
     font-size: 1.4rem;
     flex-grow: 1;
-    text-align: center; 
+    text-align: center; /* Centrar el título del proyecto */
 }
 
 .project-btn {
