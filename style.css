@@ -83,7 +83,7 @@ a:hover {
 
 /* By default, hide the mobile navigation */
 #hamburger-nav {
-    display: none; 
+    display: none;
 }
 
 /* Container for the icon and the links */
@@ -718,6 +718,18 @@ body.dark-mode .dark-mode-toggle {
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     color: white;
 }
+
+/* --- NUEVO: Banner para Reverse Shell (project-banner-4) --- */
+.project-banner-4 {
+    background: linear-gradient(135deg, #1c7ed6 0%, #15aabf 100%); /* Un color azul/cian que sugiere Network/Code */
+    color: white;
+}
+
+body.dark-mode .project-banner-4 {
+    /* Ajuste de color para Dark Mode */
+    background: linear-gradient(135deg, #0b699e 0%, #009999 100%);
+}
+/* ----------------------------------------------------------- */
 
 .project-icon {
     font-size: 3rem;
